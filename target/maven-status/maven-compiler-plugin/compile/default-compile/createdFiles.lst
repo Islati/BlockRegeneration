@@ -1,0 +1,7 @@
+com/caved_in/blockregeneration/blockdata/BlockData.class
+com/caved_in/blockregeneration/blockdata/BlockManager.class
+com/caved_in/blockregeneration/listeners/BukkitListeners.class
+com/caved_in/blockregeneration/runnables/OreDeplete.class
+com/caved_in/blockregeneration/blockdata/BlockManager$1.class
+com/caved_in/blockregeneration/runnables/RestoreBlock.class
+com/caved_in/blockregeneration/BlockRegeneration.class

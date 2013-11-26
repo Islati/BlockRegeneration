@@ -1,0 +1,6 @@
+name: BlockRegeneration
+main: com.caved_in.blockregeneration.BlockRegeneration
+version: 0.1
+description:  Basic block regeneration
+author: Brandon
+depend: [Tunnels-Common]
