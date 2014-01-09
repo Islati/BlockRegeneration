@@ -1,6 +1,6 @@
 package com.caved_in.blockregeneration.runnables;
 
-import com.caved_in.blockregeneration.blockdata.BlockManager;
+import com.caved_in.commons.block.BlockHandler;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 
@@ -21,6 +21,6 @@ public class OreDeplete implements Runnable {
 
 	@Override
 	public void run() {
-		BlockManager.setBlock(blockReplace,material);
+		BlockHandler.setBlock(blockReplace, material);
 	}
 }

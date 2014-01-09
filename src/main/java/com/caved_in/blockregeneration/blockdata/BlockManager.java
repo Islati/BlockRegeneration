@@ -3,7 +3,9 @@ package com.caved_in.blockregeneration.blockdata;
 import com.caved_in.blockregeneration.BlockRegeneration;
 import com.caved_in.blockregeneration.runnables.OreDeplete;
 import com.caved_in.blockregeneration.runnables.RestoreBlock;
-import com.caved_in.commons.misc.TimeHandler;
+import com.caved_in.commons.block.BlockData;
+import com.caved_in.commons.block.BlockHandler;
+import com.caved_in.commons.time.TimeHandler;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -43,11 +45,11 @@ public class BlockManager {
 		Location blockLocation = blockData.getLocation();
 		//Check if the broken block was an ore
 		if (!blockLocations.contains(blockLocation)) {
-			if (isOre(block)) {
+			if (BlockHandler.isOre(block)) {
 				//Schedule the block for restoration
 				scheduleBlockRestore(blockData, blockRestorationTime);
 				//Changes broken ores to cobblestone
-				BlockRegeneration.runnableManager.runTaskLater(new OreDeplete(block,Material.COBBLESTONE),2);
+				BlockRegeneration.runnableManager.runTaskLater(new OreDeplete(block, Material.COBBLESTONE), 1);
 			} else {
 				//Schedule the block for restoration
 				scheduleBlockRestore(blockData, blockRestorationTime);
@@ -56,48 +58,6 @@ public class BlockManager {
 			return true;
 		} else {
 			return false;
-		}
-	}
-
-	public static void setBlock(Block block, BlockData blockData) {
-		//Update the blocks material data
-		block.getState().setData(blockData.getBlockMaterialData());
-		//Update the type
-		block.setType(blockData.getBlockType());
-		//Update the byte-data (Positioning, etc)
-		block.setData(blockData.getBlockData());
-		//Update the block state
-		block.getState().update(true);
-	}
-
-	public static void setBlock(Block block, Material changeMaterial) {
-		block.setType(changeMaterial);
-		block.getState().setType(changeMaterial);
-		block.getState().update(true);
-	}
-
-	public static void setBlock(BlockData blockData) {
-		setBlock(blockData.getLocation(),blockData);
-	}
-
-	public static void setBlock(Location location, BlockData blockData) {
-		setBlock(location.getWorld().getBlockAt(location), blockData);
-	}
-
-	public static boolean isOre(Block block) {
-		return isOre(block.getType());
-	}
-
-	public static boolean isOre(Material material) {
-		switch (material) {
-			case COAL_ORE:
-			case IRON_ORE:
-			case DIAMOND_ORE:
-			case EMERALD_ORE:
-			case REDSTONE_ORE:
-				return true;
-			default:
-				return false;
 		}
 	}
 

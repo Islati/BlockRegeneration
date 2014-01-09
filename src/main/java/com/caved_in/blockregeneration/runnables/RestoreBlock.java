@@ -1,7 +1,8 @@
 package com.caved_in.blockregeneration.runnables;
 
-import com.caved_in.blockregeneration.blockdata.BlockData;
 import com.caved_in.blockregeneration.blockdata.BlockManager;
+import com.caved_in.commons.block.BlockData;
+import com.caved_in.commons.block.BlockHandler;
 import com.caved_in.commons.effects.EffectPlayer;
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -21,7 +22,7 @@ public class RestoreBlock implements Runnable{
 
 	@Override
 	public void run() {
-		BlockManager.setBlock(blockData);
+		BlockHandler.setBlock(blockData);
 		Location blockLocation = blockData.getLocation();
 		BlockManager.removeBlockLocation(blockLocation);
 		EffectPlayer.playBlockEffectAt(blockLocation,6, Effect.STEP_SOUND,blockData.getBlockType());
